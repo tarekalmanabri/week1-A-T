@@ -153,15 +153,21 @@ const ProductScreen = ({ history, match }) => {
                     onMouseEnter={() => setIsShown(true)}
                     onMouseLeave={() => setIsShown(false)}
                   >
+                    {!size && (
+                      <p className="text-danger">
+                        please choose your bundle size
+                      </p>
+                    )}
                     <Button
                       onClick={addToCartHandler}
                       className="btn-success"
                       type="button"
-                      disabled={product.countInStock === 0 || size === 0}
+                      disabled={
+                        product.countInStock === 0 || !size || size === 0
+                      }
                     >
                       Add To Cart
                     </Button>
-                    {isShown && <div>please choose your bundle size</div>}{" "}
                   </ListGroup.Item>
                 </ListGroup>
               </Card>
@@ -175,7 +181,7 @@ const ProductScreen = ({ history, match }) => {
                 </ListGroup.Item>
                 <ListGroup.Item>Price: ${price}</ListGroup.Item>
                 <ListGroup.Item>
-                  Prodcuts In This Bundle: {product.description}
+                  Products In This Bundle: {product.description}
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -185,17 +191,22 @@ const ProductScreen = ({ history, match }) => {
               <h2>Reviews</h2>
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <p>Average Rating</p>
-                  <p>
-                    {
-                      <Rating
-                        value={product.rating}
-                        text={`${product.numReviews} reviews`}
-                      />
-                    }
-                  </p>
-                </ListGroup.Item>
+                {product.reviews.length > 0 && (
+                  <ListGroup.Item>
+                    <p>Average Rating</p>
+                    <p>
+                      {
+                        <Rating
+                          value={product.rating}
+                          text={`${product.numReviews} review${
+                            product.numReviews !== 1 ? "s" : ""
+                          }`}
+                        />
+                      }
+                    </p>
+                  </ListGroup.Item>
+                )}
+
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
                     <strong>{review.name}</strong>

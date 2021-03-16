@@ -1,10 +1,10 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
-import SearchBox from './SearchBox';
-import { logout } from '../actions/userActions';
+import React from "react";
+import { Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { LinkContainer } from "react-router-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import SearchBox from "./SearchBox";
+import { logout } from "../actions/userActions";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const Header = () => {
           <LinkContainer to="/">
             <Navbar.Brand>
               <img
-                src="/logo.png"
+                src="/images/logo.png"
                 width="150"
                 className="d-inline-block align-top"
                 alt="Bundly logo"
