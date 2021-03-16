@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { foodItemSchema } from './foodItemModel.js'
 
 const bundleReviewSchema = mongoose.Schema(
   {
@@ -22,14 +23,7 @@ const bundleSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    // list of contained food products
-    foodItems: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'FoodItem',
-      }
-    ],
+    foodItems: [foodItemSchema],
     image: {
       type: String,
       required: true,
