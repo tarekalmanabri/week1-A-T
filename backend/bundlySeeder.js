@@ -4,7 +4,7 @@ import colors from 'colors';
 
 import FoodItem from './models/foodItemModel.js';
 import Bundle from './models/bundleModel.js';
-import Farmer from './models/farmerModel';
+import Farmer from './models/farmerModel.js';
 import connectDB from './config/db.js';
 
 dotenv.config();
