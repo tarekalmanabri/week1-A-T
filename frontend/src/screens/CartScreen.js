@@ -49,10 +49,6 @@ const CartScreen = ({ match, location, history }) => {
   };
   console.log(cartItems);
 
-  function calculatePrice({ price, qty, size }) {
-    return price * size * qty;
-  }
-
   return (
     <Row>
       <Col md={8}>
@@ -71,10 +67,18 @@ const CartScreen = ({ match, location, history }) => {
                   </Col>
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>
-                      {item.name} ({item.size})
+                      {item.name} ({size})
                     </Link>
                   </Col>
-                  <Col md={2}>${calculatePrice(item).toFixed(2)}</Col>
+                  <Col md={2}>
+                    $
+                    {cartItems
+                      .reduce(
+                        (acc, item) => acc + item.qty * item.price * size,
+                        0
+                      )
+                      .toFixed(2)}
+                  </Col>
                   <Col md={2}>
                     <Form.Control
                       as="select"
@@ -117,7 +121,7 @@ const CartScreen = ({ match, location, history }) => {
               </h2>
               $
               {cartItems
-                .reduce((acc, item) => acc + item.qty * item.price, 0)
+                .reduce((acc, item) => acc + item.qty * item.price * size, 0)
                 .toFixed(2)}
             </ListGroup.Item>
             <ListGroup.Item>
