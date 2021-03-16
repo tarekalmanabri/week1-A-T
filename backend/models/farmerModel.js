@@ -19,10 +19,12 @@ const farmerSchema = mongoose.Schema(
     image: {
       type: String,
       required: true,
+      default: 'sampleFarm.jpg',
     },
     description: {
       type: String,
       required: true,
+      default: 'sample description',
     },
   },
   {

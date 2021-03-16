@@ -29,26 +29,32 @@ const importData = async () => {
         name: 'Martijn Jansen',
         city: 'Nuenen',
         address: 'Europalaan 25',
-        image: 'farm-1.jpg',
+        image: 'farm-2.jpg',
         description: 'great farm in the ...',
       },
     ]);
-    const createdFoodItems = await FoodItem.insertMany([
+
+    const fooditems = [
       {
-        farmer: { _id: '1' },
         name: 'Apples',
         price: 1.0,
         image: 'image-1.jpg',
         description: 'tasty apples',
       },
       {
-        farmer: { _id: '2' },
         name: 'Strawberry',
         price: 1.2,
         image: 'image-2.jpg',
         description: 'Tasty berries',
       },
-    ]);
+    ];
+    console.log(fooditems);
+    const firstFarmer = createdFarmers[0]._id;
+    const sampleFoodItems = fooditems.map((item) => {
+      return { ...item, farmer: firstFarmer };
+    });
+
+    const createdFoodItems = await FoodItem.insertMany(sampleFoodItems);
     const createdBundles = await Bundle.insertMany([
       {
         name: 'Fruits',
@@ -71,6 +77,7 @@ const importData = async () => {
         countInStock: 111,
       },
     ]);
+    console.log(createdFarmers);
     console.log(createdBundles);
     console.log('Data Imported!'.green.inverse);
     process.exit();
