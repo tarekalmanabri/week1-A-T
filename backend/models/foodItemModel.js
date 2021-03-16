@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 // Foodstuff products
-const foodItemSchema = mongoose.Schema(
+export const foodItemSchema = mongoose.Schema(
   {
     name: {
       type: String,
