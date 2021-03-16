@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { listBundles } from '../actions/bundleActions'
 
-const BundlesSreen = () => {
+const BundlesScreen = () => {
   const params = useParams()
   const { keyword } = params
   const pageNumber = params.pageNumber || 1
@@ -63,4 +63,4 @@ const BundlesSreen = () => {
   )
 }
 
-export default BundlesSreen
+export default BundlesScreen
