@@ -1,44 +1,54 @@
-import mongoose from 'mongoose'
-import dotenv from 'dotenv'
-import colors from 'colors'
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import colors from 'colors';
 
-import FoodItem from './models/foodItemModel.js'
-import Bundle from './models/bundleModel.js'
+import FoodItem from './models/foodItemModel.js';
+import Bundle from './models/bundleModel.js';
+import Farmer from './models/farmerModel';
+import connectDB from './config/db.js';
 
-import connectDB from './config/db.js'
-
-dotenv.config()
-colors.enable()
-connectDB()
+dotenv.config();
+colors.enable();
+connectDB();
 
 const importData = async () => {
   try {
-    await FoodItem.deleteMany()
-    await Bundle.deleteMany()
+    await FoodItem.deleteMany();
+    await Bundle.deleteMany();
+    await Farmer.deleteMany();
+
+    const createdFarmers = await Farmer.insertMany([
+      {
+        name: 'John Smith',
+        city: 'Eindhoven',
+        address: 'Churchillaan 10',
+        image: 'farm-1.jpg',
+        description: 'great farm in the ...',
+      },
+      {
+        name: 'Martijn Jansen',
+        city: 'Nuenen',
+        address: 'Europalaan 25',
+        image: 'farm-1.jpg',
+        description: 'great farm in the ...',
+      },
+    ]);
     const createdFoodItems = await FoodItem.insertMany([
       {
+        farmer: { _id: '1' },
         name: 'Apples',
         price: 1.0,
-        producer: {
-          name: 'John Smith',
-          city: 'Eindhoven',
-          address: 'Churchillaan 10',
-        },
         image: 'image-1.jpg',
         description: 'tasty apples',
       },
       {
+        farmer: { _id: '2' },
         name: 'Strawberry',
         price: 1.2,
-        producer: {
-          name: 'Martijn Jansen',
-          city: 'Nuenen',
-          address: 'Europalaan 25',
-        },
         image: 'image-2.jpg',
         description: 'Tasty berries',
       },
-    ])
+    ]);
     const createdBundles = await Bundle.insertMany([
       {
         name: 'Fruits',
@@ -60,14 +70,14 @@ const importData = async () => {
         price: 11.9,
         countInStock: 111,
       },
-    ])
-    console.log(createdBundles)
-    console.log('Data Imported!'.green.inverse)
-    process.exit()
+    ]);
+    console.log(createdBundles);
+    console.log('Data Imported!'.green.inverse);
+    process.exit();
   } catch (error) {
-    console.error(`${error}`.red.inverse)
-    process.exit(1)
+    console.error(`${error}`.red.inverse);
+    process.exit(1);
   }
-}
+};
 
-importData()
+importData();
