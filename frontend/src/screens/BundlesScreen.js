@@ -43,9 +43,11 @@ const BundlesScreen = () => {
                       <ul>
                         <li>
                           <div style={{ backgroundColor: '#aff6f7' }}>
-                            <p>{`Producer name: ${foodItem.producer.name}`}</p>
-                            <p>{`City: ${foodItem.producer.city}`}</p>
-                            <p>{`Address: ${foodItem.producer.address}`}</p>
+                            <p>{`Farmer name: ${foodItem.farmer.name}`}</p>
+                            <p>{`City: ${foodItem.farmer.city}`}</p>
+                            <p>{`Address: ${foodItem.farmer.address}`}</p>
+                            <p>{`Image: ${foodItem.farmer.image}`}</p>
+                            <p>{`Description: ${foodItem.farmer.description}`}</p>
                           </div>
                         </li>
                       </ul>
