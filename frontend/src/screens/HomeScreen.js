@@ -10,7 +10,7 @@ import ProductCarousel from '../components/ProductCarousel';
 import Bundly from '../components/Bundly';
 import BundleCategory from '../components/BundleCategory';
 import Meta from '../components/Meta';
-import { listProducts } from '../actions/productActions';
+import { listBundles } from '../actions/bundleActions';
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword;
@@ -19,11 +19,11 @@ const HomeScreen = ({ match }) => {
 
   const dispatch = useDispatch();
 
-  const productList = useSelector((state) => state.productList);
-  const { loading, error, products, page, pages } = productList;
+  const bundleList = useSelector((state) => state.bundleList);
+  const { loading, error, bundles, page, pages } = bundleList;
 
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber));
+    dispatch(listBundles(keyword, pageNumber));
   }, [dispatch, keyword, pageNumber]);
 
   return (
@@ -49,9 +49,9 @@ const HomeScreen = ({ match }) => {
       ) : (
         <>
           <Row>
-            {products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <Product product={product} />
+            {bundles.map((bundle) => (
+              <Col key={bundle._id} sm={12} md={6} lg={4} xl={3}>
+                <Product bundle={bundle} />
               </Col>
             ))}
           </Row>

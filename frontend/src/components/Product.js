@@ -3,28 +3,26 @@ import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import Rating from './Rating';
 
-const Product = ({ product }) => {
+const Product = ({ bundle }) => {
+  console.log(bundle + 'from bundle');
   return (
     <Card className="my-3 p-3 rounded">
-      <Link to={`/product/${product._id}`}>
-        <Card.Img src={product.image} variant="top" />
+      <Link to={`/product/${bundle._id}`}>
+        <Card.Img src={bundle.image} variant="top" />
       </Link>
 
       <Card.Body>
-        <Link to={`/product/${product._id}`}>
+        <Link to={`/product/${bundle._id}`}>
           <Card.Title as="div">
-            <strong>{product.name}</strong>
+            <strong>{bundle.name}</strong>
           </Card.Title>
         </Link>
 
         <Card.Text as="div">
-          <Rating
-            value={product.rating}
-            text={`${product.numReviews} reviews`}
-          />
+          <Rating value={bundle.rating} text={`${bundle.numReviews} reviews`} />
         </Card.Text>
 
-        <Card.Text as="h3">${product.price}</Card.Text>
+        <Card.Text as="h3">${bundle.price}</Card.Text>
       </Card.Body>
     </Card>
   );

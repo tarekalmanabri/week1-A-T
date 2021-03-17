@@ -49,10 +49,11 @@ h2 {
 }
 
 .carousel img {
-  height: 25rem;
-  padding: 4rem;
-  margin: 3rem;
-  border-radius: 50%;
+  max-height: 25rem;
+  max-width: fit-content;
+  /* padding: 4rem; */
+  /* margin: 3rem; */
+  /* border-radius: 50%; */
   
   /* margin-left: auto;
   margin-right: auto; */
