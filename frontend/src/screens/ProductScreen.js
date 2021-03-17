@@ -18,9 +18,10 @@ import {
   listProductDetails,
   createProductReview,
 } from "../actions/productActions";
+import { listBundles } from "../actions/bundleActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 
-const ProductScreen = ({ history, match }) => {
+const ProductScreen = ({ history, match, keyword, pageNumber }) => {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
@@ -31,6 +32,9 @@ const ProductScreen = ({ history, match }) => {
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
+
+  const bundleList = useSelector((state) => state.bundleList);
+  const { bundles, page, pages } = bundleList;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -50,6 +54,7 @@ const ProductScreen = ({ history, match }) => {
     if (!product._id || product._id !== match.params.id) {
       dispatch(listProductDetails(match.params.id));
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
+      dispatch(listBundles(keyword, pageNumber));
     }
   }, [dispatch, match, successProductReview]);
 
@@ -67,7 +72,7 @@ const ProductScreen = ({ history, match }) => {
     );
   };
 
-  const price = product.price * size;
+  const price = (product.price * size && qty * product.price).toFixed(2);
 
   return (
     <>
@@ -133,7 +138,9 @@ const ProductScreen = ({ history, match }) => {
                             <Form.Control
                               as="select"
                               value={qty}
-                              onChange={(e) => setQty(e.target.value)}
+                              onChange={(e) => {
+                                setQty(e.target.value);
+                              }}
                             >
                               {[...Array(product.countInStock).keys()].map(
                                 (x) => (

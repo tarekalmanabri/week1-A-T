@@ -67,16 +67,15 @@ const CartScreen = ({ match, location, history }) => {
                   </Col>
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>
-                      {item.name} ({size})
+                      {item.name} ({item.size})
                     </Link>
                   </Col>
                   <Col md={2}>
                     $
                     {cartItems
-                      .reduce(
-                        (acc, item) => acc + item.qty * item.price * size,
-                        0
-                      )
+                      .reduce((acc, item) => {
+                        return acc + item.qty * item.price * item.size;
+                      }, 0)
                       .toFixed(2)}
                   </Col>
                   <Col md={2}>
@@ -121,7 +120,10 @@ const CartScreen = ({ match, location, history }) => {
               </h2>
               $
               {cartItems
-                .reduce((acc, item) => acc + item.qty * item.price * size, 0)
+                .reduce(
+                  (acc, item) => acc + item.qty * item.price * item.size,
+                  0
+                )
                 .toFixed(2)}
             </ListGroup.Item>
             <ListGroup.Item>
