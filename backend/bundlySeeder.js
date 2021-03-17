@@ -20,10 +20,11 @@ const importData = async () => {
 
     const farmers = await Farmer.insertMany(farmersDataSet);
 
-    // assuming that the lengths of farmers and fooditems are equal
     const foodItems = await FoodItem.insertMany(foodItemsDataSet.map((product, index) => ({
       ...product,
-      farmer: farmers[index],
+      farmer: index < farmers.length
+      ? farmers[index]
+      : farmers[farmers.length - 1],
     })));
 
     await Bundle.insertMany(bundlesDataSet.map((bundle) => ({
