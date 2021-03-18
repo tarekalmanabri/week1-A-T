@@ -24,11 +24,11 @@ const BundleCategory = () => {
         products.map((product) => (
           <Card key={product._id}>
             <Link to={`/products/${product._id}`}>
-              <Card.Img variant="top" src={product.image} />
+              <Card.Img variant='top' src={product.image} />
             </Link>
             <Card.Body>
               <Link to={`/products/${product._id}`}>
-                <Card.Title as="h4" className="bundle-category">
+                <Card.Title as='h4' className='bundle-category'>
                   {product.category}
                 </Card.Title>
               </Link>
@@ -37,7 +37,7 @@ const BundleCategory = () => {
           </Card>
         ))
       ) : (
-        <Message variant="danger">{error}</Message>
+        <Message variant='danger'>{error}</Message>
       )}
     </CardGroup>
   )

@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 const Bundly = () => {
   return (
     <>
-      <Jumbotron className="my-5">
-        <h1 className="display-3">Save time, money and local farmers!</h1>
-        <p className="lead">
+      <Jumbotron className='my-5'>
+        <h1 className='display-3'>Save time, money and local farmers!</h1>
+        <p className='lead'>
           Officiis iure rerum voluptates a cumque velit quibusdam sed amet
           tempora. Sit laborum ab, eius fugit doloribus tenetur fugiat,
           temporibus enim commodi iusto libero magni deleniti quod quam
@@ -18,8 +18,8 @@ const Bundly = () => {
           Possimus quis earum veniam quasi aliquam eligendi, placeat qui
           corporis!
         </p>
-        <Link to="/register?redirect=/">
-          <Button className="homepage-button" variant="primary" size="lg" block>
+        <Link to='/register?redirect=/'>
+          <Button className='homepage-button' variant='primary' size='lg' block>
             ORDER NOW
           </Button>
         </Link>

@@ -44,18 +44,15 @@ h2 {
   top: 0;
 }
 
-.carousel-caption h2 {
-  /* font-weight: 500; */
-}
 
 .carousel img {
-  height: 25rem;
+  max-width: 50rem;
+  max-height: 40rem;
   padding: 4rem;
   margin: 3rem;
   border-radius: 50%;
-
-  /* margin-left: auto;
-  margin-right: auto; */
+  margin-left: auto;
+  margin-right: auto;
 }
 .carousel a {
   margin: 0 auto;

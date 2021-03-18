@@ -4,36 +4,36 @@ import { Carousel, Image } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from './Loader'
 import Message from './Message'
-import { listTopBundles } from '../actions/bundleActions'
+import { listTopProducts } from '../actions/productActions'
 
 const ProductCarousel = () => {
   const dispatch = useDispatch()
 
-  const bundleTopRated = useSelector((state) => state.bundleTopRated)
-  const { loading, error, bundles } = bundleTopRated
+  const productTopRated = useSelector((state) => state.productTopRated)
+  const { loading, error, products } = productTopRated
 
   useEffect(() => {
-    dispatch(listTopBundles())
+    dispatch(listTopProducts())
   }, [dispatch])
 
   return loading ? (
     <Loader />
   ) : error ? (
-    <Message variant="danger">{error}</Message>
+    <Message variant='danger'>{error}</Message>
   ) : (
-    <Carousel pause="hover" className="bg-light mb-5">
-      {bundles.map((bundle) => (
-        <Carousel.Item key={bundle._id}>
-          <Link to={`/bundles/${bundle._id}`}>
+    <Carousel pause='hover' className='bg-light mb-5'>
+      {products.map((product) => (
+        <Carousel.Item key={product._id}>
+          <Link to={`/bundles/${product._id}`}>
             <Image
-              className="w-100 h-100"
-              src={bundle.image}
-              alt={bundle.name}
+              className='w-100 h-100'
+              src={product.image}
+              alt={product.name}
               fluid
             />
-            <Carousel.Caption className="carousel-caption">
+            <Carousel.Caption className='carousel-caption'>
               <h2>
-                {bundle.name} (${bundle.price})
+                {product.name} (${product.price})
               </h2>
             </Carousel.Caption>
           </Link>
