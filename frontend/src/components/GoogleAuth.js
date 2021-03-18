@@ -23,7 +23,7 @@ const GoogleAuth = () => {
           <Button
             onClick={renderProps.onClick}
             disabled={renderProps.disabled}
-            className='btn btn-block my-2'
+            className='btn btn-block my-2 btn-google'
             style={{ backgroundColor: '#CF4332', border: 'none' }}
           >
             <i
