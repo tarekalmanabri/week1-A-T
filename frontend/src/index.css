@@ -83,3 +83,24 @@ h2 {
   height: 1px;
   margin: 0 10px;
 }
+
+.btn-search:hover {
+  background-color: #78c2ad;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+.btn-search:active {
+  background-color: #78c2ad !important;
+  box-shadow: 0 0 0 0.3rem rgb(255, 255, 255, 0.5) !important;
+}
+
+.btn-google:hover {
+  background-color: #c32413 !important;
+}
+
+.btn-facebook:hover {
+  background-color: #1e4db4 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #78c2ad !important;
+}
