@@ -9,6 +9,8 @@ import {
   deleteUser,
   getUserById,
   updateUser,
+  authUserFacebook,
+  authUserGoogle,
 } from '../controllers/userController.js'
 import { protect, admin } from '../middleware/authMiddleware.js'
 
@@ -23,5 +25,8 @@ router
   .delete(protect, admin, deleteUser)
   .get(protect, admin, getUserById)
   .put(protect, admin, updateUser)
+
+router.post('/auth/facebook', authUserFacebook)
+router.post('/auth/google', authUserGoogle)
 
 export default router
