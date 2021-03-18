@@ -100,7 +100,6 @@ export const register = (name, email, password) => async (dispatch) => {
 
     dispatch({
       type: USER_REGISTER_SUCCESS,
-      payload: data,
     })
 
     dispatch({
@@ -178,7 +177,6 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
 
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
-      payload: data,
     })
     dispatch({
       type: USER_LOGIN_SUCCESS,
