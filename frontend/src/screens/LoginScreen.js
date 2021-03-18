@@ -57,11 +57,12 @@ const LoginScreen = ({ location, history }) => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type="submit" variant="primary" className="mt-2">
+        <Button type='submit' variant='primary' className='mt-2 btn btn-block'>
           Sign In
         </Button>
       </Form>
 
+      <div class='or'> OR </div>
       <GoogleAuth />
       <FacebookAuth />
 

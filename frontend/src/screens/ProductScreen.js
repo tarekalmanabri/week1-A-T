@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -18,7 +18,6 @@ import {
   listProductDetails,
   createProductReview,
 } from "../actions/productActions";
-import { listBundles } from "../actions/bundleActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 
 const ProductScreen = ({ history, match, keyword, pageNumber }) => {
@@ -32,9 +31,6 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
-
-  const bundleList = useSelector((state) => state.bundleList);
-  const { bundles, page, pages } = bundleList;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -54,7 +50,6 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
     if (!product._id || product._id !== match.params.id) {
       dispatch(listProductDetails(match.params.id));
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
-      dispatch(listBundles(keyword, pageNumber));
     }
   }, [dispatch, match, successProductReview]);
 
@@ -71,9 +66,13 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
       })
     );
   };
-
-  const price = (product.price * size && qty * product.price).toFixed(2);
-
+  // not working:
+  // const price = (product.price * size && qty * product.price).toFixed(2)
+  // working:
+  const getPrice = () => {
+    if (!size || !qty || !product.price) return 0
+    return (product.price * size * qty).toFixed(2)
+  }
   return (
     <>
       <Link className="btn btn-light my-3" to="/">
@@ -83,22 +82,22 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
-      ) : (
+      ) : product && (
         <>
           <Meta title={product.name} />
           <Row>
-            <Col md={6}>
+            <Col md={8}>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
-
-            <Col md={3}>
+            
+            <Col md={4}>
               <Card>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <Row>
                       <Col>Price:</Col>
                       <Col>
-                        <strong>${price}</strong>
+                        <strong>${getPrice()}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -162,7 +161,7 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
                   >
                     {!size && (
                       <p className="text-danger">
-                        please choose your bundle size
+                        Please choose your bundle size!
                       </p>
                     )}
                     <Button
@@ -170,7 +169,7 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
                       className="btn-success"
                       type="button"
                       disabled={
-                        product.countInStock === 0 || !size || size === 0
+                        !product.countInStock || !size
                       }
                     >
                       Add To Cart
@@ -181,14 +180,24 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
             </Col>
           </Row>
           <Row>
-            <Col md={3}>
+            <Col md={12}>
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <h3>{product.name}</h3>
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${price}</ListGroup.Item>
-                <ListGroup.Item>
-                  Products In This Bundle: {product.description}
+                <ListGroup.Item>Price: ${getPrice()}</ListGroup.Item>
+                  <ListGroup.Item>
+                  Products In This Bundle:
+                  <ol>
+                    {/* Tarek, mark this '?' after foodItems! It's important otherwise all crashes :)) */}
+                    {product.foodItems?.map((item) => (
+                      <li key={item._id}>
+                        <p>{`${item.name}, €${item.price}, img: ${item.image}, farmer: ${item.farmer.name} from ${item.farmer.city}`}</p>
+                        {/* see in the console all available fields */}
+                        <p>{item.description}</p>
+                      </li>
+                    ))}
+                  </ol>
                 </ListGroup.Item>
               </ListGroup>
             </Col>
