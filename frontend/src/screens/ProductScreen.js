@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -66,9 +66,13 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
       })
     );
   };
-
-  const price = (product.price * size && qty * product.price).toFixed(2);
-// console.log(product);
+  // not working:
+  // const price = (product.price * size && qty * product.price).toFixed(2)
+  // working:
+  const getPrice = () => {
+    if (!size || !qty || !product.price) return 0
+    return (product.price * size * qty).toFixed(2)
+  }
   return (
     <>
       <Link className="btn btn-light my-3" to="/">
@@ -82,18 +86,18 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
         <>
           <Meta title={product.name} />
           <Row>
-            <Col md={6}>
+            <Col md={8}>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
-
-            <Col md={3}>
+            
+            <Col md={4}>
               <Card>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <Row>
                       <Col>Price:</Col>
                       <Col>
-                        <strong>${price}</strong>
+                        <strong>${getPrice()}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -157,7 +161,7 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
                   >
                     {!size && (
                       <p className="text-danger">
-                        please choose your bundle size
+                        Please choose your bundle size!
                       </p>
                     )}
                     <Button
@@ -165,7 +169,7 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
                       className="btn-success"
                       type="button"
                       disabled={
-                        product.countInStock === 0 || !size || size === 0
+                        !product.countInStock || !size
                       }
                     >
                       Add To Cart
@@ -176,12 +180,12 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
             </Col>
           </Row>
           <Row>
-            <Col md={3}>
+            <Col md={12}>
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <h3>{product.name}</h3>
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${price}</ListGroup.Item>
+                <ListGroup.Item>Price: ${getPrice()}</ListGroup.Item>
                   <ListGroup.Item>
                   Products In This Bundle:
                   <ol>
