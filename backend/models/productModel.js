@@ -27,6 +27,10 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    foodItems: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'FoodItem',
+    }],
     image: {
       type: String,
       required: true,

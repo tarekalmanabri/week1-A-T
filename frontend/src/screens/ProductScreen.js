@@ -18,7 +18,6 @@ import {
   listProductDetails,
   createProductReview,
 } from "../actions/productActions";
-import { listBundles } from "../actions/bundleActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 
 const ProductScreen = ({ history, match, keyword, pageNumber }) => {
@@ -32,9 +31,6 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
-
-  const bundleList = useSelector((state) => state.bundleList);
-  const { bundles, page, pages } = bundleList;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -54,7 +50,6 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
     if (!product._id || product._id !== match.params.id) {
       dispatch(listProductDetails(match.params.id));
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
-      dispatch(listBundles(keyword, pageNumber));
     }
   }, [dispatch, match, successProductReview]);
 
