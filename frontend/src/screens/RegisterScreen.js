@@ -88,11 +88,12 @@ const RegisterScreen = ({ location, history }) => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='success'>
+        <Button type='submit' variant='success' className='mt-2 btn btn-block'>
           Register
         </Button>
       </Form>
 
+      <div class='or'> OR </div>
       <GoogleAuth />
       <FacebookAuth />
 
