@@ -18,7 +18,7 @@ const GoogleAuth = () => {
     <div>
       <GoogleLogin
         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-        buttonText='Continue with Google'
+        buttonText="Continue with Google"
         onSuccess={responseSuccessGoogle}
         onFailure={responseFailGoogle}
         cookiePolicy={'single_host_origin'}

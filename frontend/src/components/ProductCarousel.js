@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Carousel, Image } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import Loader from './Loader';
-import Message from './Message';
-import { listTopBundles } from '../actions/bundleActions';
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Carousel, Image } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import Loader from './Loader'
+import Message from './Message'
+import { listTopBundles } from '../actions/bundleActions'
 
 const ProductCarousel = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const bundleTopRated = useSelector((state) => state.bundleTopRated);
-  const { loading, error, bundles } = bundleTopRated;
+  const bundleTopRated = useSelector((state) => state.bundleTopRated)
+  const { loading, error, bundles } = bundleTopRated
 
   useEffect(() => {
-    dispatch(listTopBundles());
-  }, [dispatch]);
+    dispatch(listTopBundles())
+  }, [dispatch])
 
   return loading ? (
     <Loader />
@@ -40,7 +40,7 @@ const ProductCarousel = () => {
         </Carousel.Item>
       ))}
     </Carousel>
-  );
-};
+  )
+}
 
-export default ProductCarousel;
+export default ProductCarousel

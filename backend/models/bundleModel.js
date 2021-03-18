@@ -22,10 +22,12 @@ const bundleSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    foodItems: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'FoodItem',
-    }],
+    foodItems: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'FoodItem',
+      },
+    ],
     image: {
       type: String,
       required: true,
@@ -62,7 +64,7 @@ const bundleSchema = mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 )
 
 const Bundle = mongoose.model('Bundle', bundleSchema)

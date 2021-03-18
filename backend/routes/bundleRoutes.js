@@ -1,13 +1,13 @@
-import express from 'express';
-const router = express.Router();
+import express from 'express'
+const router = express.Router()
 import {
   getBundles,
   getBundleById,
   getTopBundles,
-} from '../controllers/bundleController.js';
+} from '../controllers/bundleController.js'
 
-router.route('/').get(getBundles);
-router.get('/top', getTopBundles);
-router.route('/:id').get(getBundleById);
+router.route('/').get(getBundles)
+router.get('/top', getTopBundles)
+router.route('/:id').get(getBundleById)
 
-export default router;
+export default router

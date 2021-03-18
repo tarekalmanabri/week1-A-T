@@ -48,7 +48,7 @@ export const login = (email, password) => async (dispatch) => {
     const { data } = await axios.post(
       '/api/users/login',
       { email, password },
-      config
+      config,
     )
 
     dispatch({
@@ -95,7 +95,7 @@ export const register = (name, email, password) => async (dispatch) => {
     const { data } = await axios.post(
       '/api/users',
       { name, email, password },
-      config
+      config,
     )
 
     dispatch({
@@ -321,7 +321,7 @@ export const authFacebook = (accessToken, userID) => async (dispatch) => {
     const { data } = await axios.post(
       '/api/users/auth/facebook',
       { accessToken, userID },
-      config
+      config,
     )
 
     dispatch({ type: USER_AUTH_FACEBOOK_SUCCESS })
@@ -353,7 +353,7 @@ export const authGoogle = (tokenId) => async (dispatch) => {
     const { data } = await axios.post(
       '/api/users/auth/google',
       { tokenId },
-      config
+      config,
     )
 
     dispatch({ type: USER_AUTH_GOOGLE_SUCCESS })

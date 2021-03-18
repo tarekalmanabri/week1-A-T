@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 export const farmerSchema = mongoose.Schema(
   {
@@ -27,7 +27,7 @@ export const farmerSchema = mongoose.Schema(
   },
   {
     timestamps: true,
-  }
-);
-const Farmer = mongoose.model('Farmer', farmerSchema);
-export default Farmer;
+  },
+)
+const Farmer = mongoose.model('Farmer', farmerSchema)
+export default Farmer

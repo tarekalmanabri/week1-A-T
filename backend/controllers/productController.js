@@ -77,14 +77,7 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route   PUT /api/products/:id
 // @access  Private/Admin
 const updateProduct = asyncHandler(async (req, res) => {
-  const {
-    name,
-    price,
-    description,
-    image,
-    category,
-    countInStock,
-  } = req.body
+  const { name, price, description, image, category, countInStock } = req.body
 
   const product = await Product.findById(req.params.id)
 
@@ -114,7 +107,7 @@ const createProductReview = asyncHandler(async (req, res) => {
 
   if (product) {
     const alreadyReviewed = product.reviews.find(
-      (r) => r.user.toString() === req.user._id.toString()
+      (r) => r.user.toString() === req.user._id.toString(),
     )
 
     if (alreadyReviewed) {

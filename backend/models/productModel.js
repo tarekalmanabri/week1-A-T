@@ -13,7 +13,7 @@ const reviewSchema = mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 )
 
 const productSchema = mongoose.Schema(
@@ -63,7 +63,7 @@ const productSchema = mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 )
 
 const Product = mongoose.model('Product', productSchema)

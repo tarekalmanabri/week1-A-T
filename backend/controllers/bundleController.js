@@ -1,7 +1,7 @@
-import asyncHandler from 'express-async-handler';
-import Farmer from '../models/farmerModel.js';
-import FoodItem from '../models/foodItemModel.js';
-import Bundle from '../models/bundleModel.js';
+import asyncHandler from 'express-async-handler'
+import Farmer from '../models/farmerModel.js'
+import FoodItem from '../models/foodItemModel.js'
+import Bundle from '../models/bundleModel.js'
 
 // to include nested tables to the api response
 // (see .populate in controllers)
@@ -12,14 +12,14 @@ const nestedDocs = {
   populate: {
     path: 'farmer',
   },
-};
+}
 
 // @desc    Fetch all bundles
 // @route   GET /api/bundles
 // @access  Public
 export const getBundles = asyncHandler(async (req, res) => {
-  const pageSize = 3;
-  const page = Number(req.query.pageNumber) || 1;
+  const pageSize = 3
+  const page = Number(req.query.pageNumber) || 1
 
   const keyword = req.query.keyword
     ? {
@@ -28,36 +28,36 @@ export const getBundles = asyncHandler(async (req, res) => {
           $options: 'i',
         },
       }
-    : {};
+    : {}
 
-  const count = await Bundle.countDocuments({ ...keyword });
+  const count = await Bundle.countDocuments({ ...keyword })
   const bundles = await Bundle.find({ ...keyword })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
-    .populate(nestedDocs);
+    .populate(nestedDocs)
 
-  res.json({ bundles, page, pages: Math.ceil(count / pageSize) });
-});
+  res.json({ bundles, page, pages: Math.ceil(count / pageSize) })
+})
 
 // @desc    Fetch single bundle
 // @route   GET /api/bundles/:id
 // @access  Public
 export const getBundleById = asyncHandler(async (req, res) => {
-  const bundle = await Bundle.findById(req.params.id).populate(nestedDocs);
+  const bundle = await Bundle.findById(req.params.id).populate(nestedDocs)
 
   if (bundle) {
-    res.json(bundle);
+    res.json(bundle)
   } else {
-    res.status(404);
-    throw new Error('Bundle not found');
+    res.status(404)
+    throw new Error('Bundle not found')
   }
-});
+})
 
 // @desc    Get top rated bundles
 // @route   GET /api/bundles/top
 // @access  Public
 export const getTopBundles = asyncHandler(async (req, res) => {
-  const bundles = await Bundle.find({}).sort({ rating: -1 }).limit(3);
+  const bundles = await Bundle.find({}).sort({ rating: -1 }).limit(3)
 
-  res.json(bundles);
-});
+  res.json(bundles)
+})

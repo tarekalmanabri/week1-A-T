@@ -1,6 +1,6 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import {
   productListReducer,
   productDetailsReducer,
@@ -9,8 +9,8 @@ import {
   productUpdateReducer,
   productReviewCreateReducer,
   productTopRatedReducer,
-} from './reducers/productReducers';
-import { cartReducer } from './reducers/cartReducers';
+} from './reducers/productReducers'
+import { cartReducer } from './reducers/cartReducers'
 import {
   userLoginReducer,
   userRegisterReducer,
@@ -21,7 +21,7 @@ import {
   userUpdateReducer,
   userAuthFaceBookReducer,
   userAuthGoogleReducer,
-} from './reducers/userReducers';
+} from './reducers/userReducers'
 import {
   orderCreateReducer,
   orderDetailsReducer,
@@ -29,12 +29,12 @@ import {
   orderDeliverReducer,
   orderListMyReducer,
   orderListReducer,
-} from './reducers/orderReducers';
+} from './reducers/orderReducers'
 import {
   bundleListReducer,
   bundleDetailsReducer,
   bundleTopRatedReducer,
-} from './reducers/bundleReducers';
+} from './reducers/bundleReducers'
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -63,19 +63,19 @@ const reducer = combineReducers({
   bundleList: bundleListReducer,
   bundleDetails: bundleDetailsReducer,
   bundleTopRated: bundleTopRatedReducer,
-});
+})
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
-  : [];
+  : []
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
-  : null;
+  : null
 
 const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
   ? JSON.parse(localStorage.getItem('shippingAddress'))
-  : {};
+  : {}
 
 const initialState = {
   cart: {
@@ -83,14 +83,14 @@ const initialState = {
     shippingAddress: shippingAddressFromStorage,
   },
   userLogin: { userInfo: userInfoFromStorage },
-};
+}
 
-const middleware = [thunk];
+const middleware = [thunk]
 
 const store = createStore(
   reducer,
   initialState,
   composeWithDevTools(applyMiddleware(...middleware)),
-);
+)
 
-export default store;
+export default store

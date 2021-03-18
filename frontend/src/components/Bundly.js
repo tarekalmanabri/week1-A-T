@@ -1,6 +1,6 @@
-import React from 'react';
-import { Jumbotron, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Jumbotron, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Bundly = () => {
   return (
@@ -25,7 +25,7 @@ const Bundly = () => {
         </Link>
       </Jumbotron>
     </>
-  );
-};
+  )
+}
 
-export default Bundly;
+export default Bundly

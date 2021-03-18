@@ -15,7 +15,7 @@ const FacebookAuth = () => {
       <FacebookLogin
         appId={process.env.REACT_APP_FACEBOOK_CLIENT_ID}
         autoLoad={false}
-        textButton='Continue with Facebook'
+        textButton="Continue with Facebook"
         // fields='name,email,picture'
         // onClick={componentClicked}
         callback={responseFacebook}

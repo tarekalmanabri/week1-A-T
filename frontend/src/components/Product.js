@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card } from 'react-bootstrap';
-import Rating from './Rating';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Card } from 'react-bootstrap'
+import Rating from './Rating'
 
 const Product = ({ bundle }) => {
-  console.log(bundle + 'from bundle');
+  console.log(bundle + 'from bundle')
   return (
     <Card className="my-3 p-3 rounded">
       <Link to={`/product/${bundle._id}`}>
@@ -25,7 +25,7 @@ const Product = ({ bundle }) => {
         <Card.Text as="h3">${bundle.price}</Card.Text>
       </Card.Body>
     </Card>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product

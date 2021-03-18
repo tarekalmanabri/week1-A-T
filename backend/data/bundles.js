@@ -1,116 +1,116 @@
 export const farmersDataSet = [
   {
-    name: "Leona Garner",
-    city: "Juewmad",
-    address: "953 Edewe River",
-    image: "Garner.jpg",
+    name: 'Leona Garner',
+    city: 'Juewmad',
+    address: '953 Edewe River',
+    image: 'Garner.jpg',
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas blanditiis atque illum deserunt minus iure rem consequuntur",
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas blanditiis atque illum deserunt minus iure rem consequuntur',
   },
   {
-    name: "Caleb Hampton",
-    city: "Nectelzi",
-    address: "278 Ofiza Heights",
-    image: "Hampton.jpg",
+    name: 'Caleb Hampton',
+    city: 'Nectelzi',
+    address: '278 Ofiza Heights',
+    image: 'Hampton.jpg',
     description:
-      "Doloremque tenetur necessitatibus neque deleniti eligendi soluta molestias voluptatum, molestiae consequatur, voluptate dolores sit",
+      'Doloremque tenetur necessitatibus neque deleniti eligendi soluta molestias voluptatum, molestiae consequatur, voluptate dolores sit',
   },
   {
-    name: "Virginia Romero",
-    city: "Eblekah",
-    address: "1152 Vatpa Mill",
-    image: "Romero.jpg",
+    name: 'Virginia Romero',
+    city: 'Eblekah',
+    address: '1152 Vatpa Mill',
+    image: 'Romero.jpg',
     description:
-      "Maiores saepe placeat tempore? Iure, saepe consectetur necessitatibus ipsa doloremque odit id expedita praesentium tenetur incidunt",
+      'Maiores saepe placeat tempore? Iure, saepe consectetur necessitatibus ipsa doloremque odit id expedita praesentium tenetur incidunt',
   },
   {
-    name: "Kenneth Ray",
-    city: "Fusopeca",
-    address: "1627 Lovuw Way",
-    image: "Ray.jpg",
+    name: 'Kenneth Ray',
+    city: 'Fusopeca',
+    address: '1627 Lovuw Way',
+    image: 'Ray.jpg',
     description:
-      "Deserunt quia quod dolore et excepturi eos totam explicabo, atque pariatur voluptas deleniti impedit aliquam commodi ex",
+      'Deserunt quia quod dolore et excepturi eos totam explicabo, atque pariatur voluptas deleniti impedit aliquam commodi ex',
   },
-];
+]
 export const foodItemsDataSet = [
   {
-    name: "Apples",
+    name: 'Apples',
     price: 1.0,
-    image: "apples.jpg",
+    image: 'apples.jpg',
     description:
-      "Non, voluptatibus earum ut quisquam quibusdam at officiis velit aliquam",
+      'Non, voluptatibus earum ut quisquam quibusdam at officiis velit aliquam',
   },
   {
-    name: "Strawberry",
+    name: 'Strawberry',
     price: 1.2,
-    image: "strawberry.jpg",
-    description: "Laboriosam! Ullam illo consequatur nesciunt debitis eveniet",
+    image: 'strawberry.jpg',
+    description: 'Laboriosam! Ullam illo consequatur nesciunt debitis eveniet',
   },
   {
-    name: "Potatoes",
+    name: 'Potatoes',
     price: 1.0,
-    image: "potatoes.jpg",
+    image: 'potatoes.jpg',
     description:
-      "Dolores perferendis praesentium maxime corrupti blanditiis optio",
+      'Dolores perferendis praesentium maxime corrupti blanditiis optio',
   },
   {
-    name: "Carrots",
+    name: 'Carrots',
     price: 0.9,
-    image: "carrots.jpg",
+    image: 'carrots.jpg',
     description:
-      "Sit ut aut, veritatis inventore quaerat voluptatum impedit est",
+      'Sit ut aut, veritatis inventore quaerat voluptatum impedit est',
   },
   {
-    name: "Onions",
+    name: 'Onions',
     price: 1.1,
-    image: "onions.jpg",
+    image: 'onions.jpg',
     description:
-      "Molestias voluptatum, molestiae consequatur, voluptate dolores sit maiores",
+      'Molestias voluptatum, molestiae consequatur, voluptate dolores sit maiores',
   },
-];
+]
 export const bundlesDataSet = [
   {
-    name: "Bundle - 1",
-    image: "squash.jpg",
+    name: 'Bundle - 1',
+    image: 'squash.jpg',
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas blanditiis atque illum deserunt minus iure rem consequuntur, doloremque tenetur necessitatibus neque deleniti eligendi soluta molestias voluptatum",
-    category: "Vegetarian",
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas blanditiis atque illum deserunt minus iure rem consequuntur, doloremque tenetur necessitatibus neque deleniti eligendi soluta molestias voluptatum',
+    category: 'Vegetarian',
     rating: 4.6,
     numReviews: 99,
     price: 13.1,
     countInStock: 145,
   },
   {
-    name: "Bundle - 2",
-    image: "food.jpg",
+    name: 'Bundle - 2',
+    image: 'food.jpg',
     description:
-      "Molestiae consequatur, voluptate dolores sit maiores saepe placeat tempore? Iure, saepe consectetur necessitatibus ipsa doloremque odit id expedita praesentium tenetur incidunt deserunt quia quod dolore et excepturi eos totam explicabo",
-    category: "Vegan",
+      'Molestiae consequatur, voluptate dolores sit maiores saepe placeat tempore? Iure, saepe consectetur necessitatibus ipsa doloremque odit id expedita praesentium tenetur incidunt deserunt quia quod dolore et excepturi eos totam explicabo',
+    category: 'Vegan',
     rating: 4.3,
     numReviews: 123,
     price: 11.9,
     countInStock: 111,
   },
   {
-    name: "Bundle - 3",
-    image: "box.jpg",
+    name: 'Bundle - 3',
+    image: 'box.jpg',
     description:
-      "Molestiae consequatur, voluptate dolores sit maiores saepe placeat tempore? Iure, saepe consectetur necessitatibus ipsa doloremque odit id expedita praesentium tenetur incidunt deserunt quia quod dolore et excepturi eos totam explicabo",
-    category: "Vegetarian",
+      'Molestiae consequatur, voluptate dolores sit maiores saepe placeat tempore? Iure, saepe consectetur necessitatibus ipsa doloremque odit id expedita praesentium tenetur incidunt deserunt quia quod dolore et excepturi eos totam explicabo',
+    category: 'Vegetarian',
     rating: 4.3,
     numReviews: 123,
     price: 11.9,
     countInStock: 111,
   },
   {
-    name: "Bundle - 4",
-    image: "bundle4.jpg",
+    name: 'Bundle - 4',
+    image: 'bundle4.jpg',
     description:
-      "Molestiae consequatur, voluptate dolores sit maiores saepe placeat tempore? Iure, saepe consectetur necessitatibus ipsa doloremque odit id expedita praesentium tenetur incidunt deserunt quia quod dolore et excepturi eos totam explicabo",
-    category: "Vegan",
+      'Molestiae consequatur, voluptate dolores sit maiores saepe placeat tempore? Iure, saepe consectetur necessitatibus ipsa doloremque odit id expedita praesentium tenetur incidunt deserunt quia quod dolore et excepturi eos totam explicabo',
+    category: 'Vegan',
     rating: 4.3,
     numReviews: 123,
     price: 11.9,
     countInStock: 111,
   },
-];
+]

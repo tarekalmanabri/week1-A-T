@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 // Foodstuff products
 const foodItemSchema = mongoose.Schema(
@@ -30,7 +30,7 @@ const foodItemSchema = mongoose.Schema(
   },
   {
     timestamps: true,
-  }
-);
-const FoodItem = mongoose.model('FoodItem', foodItemSchema);
-export default FoodItem;
+  },
+)
+const FoodItem = mongoose.model('FoodItem', foodItemSchema)
+export default FoodItem

@@ -32,7 +32,7 @@ app.use('/api/upload', uploadRoutes)
 app.use('/api/bundles', bundleRoutes)
 
 app.get('/api/config/paypal', (req, res) =>
-  res.send(process.env.PAYPAL_CLIENT_ID)
+  res.send(process.env.PAYPAL_CLIENT_ID),
 )
 
 const __dirname = path.resolve()
@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/frontend/build')))
 
   app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')),
   )
 } else {
   app.get('/', (req, res) => {
@@ -58,6 +58,7 @@ const PORT = process.env.PORT || 5000
 app.listen(
   PORT,
   console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
-  )
+    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow
+      .bold,
+  ),
 )

@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { listBundles } from '../actions/bundleActions';
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { listBundles } from '../actions/bundleActions'
 
 const BundlesScreen = () => {
-  const params = useParams();
-  const { keyword } = params;
-  const pageNumber = params.pageNumber || 1;
+  const params = useParams()
+  const { keyword } = params
+  const pageNumber = params.pageNumber || 1
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const bundleList = useSelector((state) => state.bundleList);
-  const { loading, error, bundles, page, pages } = bundleList;
+  const bundleList = useSelector((state) => state.bundleList)
+  const { loading, error, bundles, page, pages } = bundleList
 
   useEffect(() => {
-    dispatch(listBundles(keyword, pageNumber));
-  }, [dispatch, keyword, pageNumber]);
+    dispatch(listBundles(keyword, pageNumber))
+  }, [dispatch, keyword, pageNumber])
 
   return (
     <>
@@ -62,7 +62,7 @@ const BundlesScreen = () => {
         </ul>
       )}
     </>
-  );
-};
+  )
+}
 
-export default BundlesScreen;
+export default BundlesScreen

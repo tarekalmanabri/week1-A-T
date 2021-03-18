@@ -8,7 +8,7 @@ import {
 
 export const cartReducer = (
   state = { cartItems: [], shippingAddress: {} },
-  action
+  action,
 ) => {
   switch (action.type) {
     case CART_ADD_ITEM:
@@ -20,7 +20,7 @@ export const cartReducer = (
         return {
           ...state,
           cartItems: state.cartItems.map((x) =>
-            x.product === existItem.product ? item : x
+            x.product === existItem.product ? item : x,
           ),
         }
       } else {

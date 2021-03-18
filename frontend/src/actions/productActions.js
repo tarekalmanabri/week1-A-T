@@ -25,13 +25,13 @@ import {
 import { logout } from './userActions'
 
 export const listProducts = (keyword = '', pageNumber = '') => async (
-  dispatch
+  dispatch,
 ) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST })
 
     const { data } = await axios.get(
-      `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+      `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`,
     )
 
     dispatch({
@@ -163,7 +163,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     const { data } = await axios.put(
       `/api/products/${product._id}`,
       product,
-      config
+      config,
     )
 
     dispatch({
@@ -188,7 +188,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
 
 export const createProductReview = (productId, review) => async (
   dispatch,
-  getState
+  getState,
 ) => {
   try {
     dispatch({
