@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 import Rating from './Rating'
 
-const Product = ({ bundle }) => {
-  console.log(bundle + 'from bundle')
+const Product = ({ product }) => {
+  console.log(product.image);
   return (
     <Card className="my-3 p-3 rounded">
       <Link to={`/product/${bundle._id}`}>

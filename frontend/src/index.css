@@ -20,7 +20,7 @@ h2 {
   margin: 0.1rem;
 }
 
-.nav-brand img{
+.nav-brand img {
   width: 8rem;
 }
 
@@ -49,12 +49,11 @@ h2 {
 }
 
 .carousel img {
-  max-height: 25rem;
-  max-width: fit-content;
-  /* padding: 4rem; */
-  /* margin: 3rem; */
-  /* border-radius: 50%; */
-  
+  height: 25rem;
+  padding: 4rem;
+  margin: 3rem;
+  border-radius: 50%;
+
   /* margin-left: auto;
   margin-right: auto; */
 }
@@ -65,4 +64,43 @@ h2 {
   .carousel-caption h2 {
     font-size: 2.5vw;
   }
+}
+
+.or {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+}
+
+.or:after,
+.or:before {
+  content: '';
+  display: block;
+  background: rgb(190, 190, 190);
+  width: 30%;
+  height: 1px;
+  margin: 0 10px;
+}
+
+.btn-search:hover {
+  background-color: #78c2ad;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+.btn-search:active {
+  background-color: #78c2ad !important;
+  box-shadow: 0 0 0 0.3rem rgb(255, 255, 255, 0.5) !important;
+}
+
+.btn-google:hover {
+  background-color: #c32413 !important;
+}
+
+.btn-facebook:hover {
+  background-color: #1e4db4 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #78c2ad !important;
 }
