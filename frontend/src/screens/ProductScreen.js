@@ -68,7 +68,7 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
   };
 
   const price = (product.price * size && qty * product.price).toFixed(2);
-
+console.log(product);
   return (
     <>
       <Link className="btn btn-light my-3" to="/">

@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 import colors from "colors"
-// import users from "./data/users.js"
+import users from "./data/users.js"
 // import products from "./data/products.js"
 import { farmersDataSet, foodItemsDataSet, bundlesDataSet } from './data/bundles.js';
 import User from "./models/userModel.js"
@@ -18,10 +18,10 @@ connectDB()
 const importData = async () => {
   try {
     // await Order.deleteMany();
-    // await User.deleteMany();
-    const user = await User.findOne()
-    // const createdUsers = await User.insertMany(users);
-    // const adminUser = createdUsers[0]._id;
+    await User.deleteMany();
+    // const user = await User.findOne()
+    const createdUsers = await User.insertMany(users);
+    const adminUser = createdUsers[0]._id;
 
     await Farmer.deleteMany()
     await FoodItem.deleteMany()
@@ -39,7 +39,7 @@ const importData = async () => {
     await Product.insertMany(bundlesDataSet.map((bundle) => ({
       ...bundle,
       foodItems,
-      user,
+      user: adminUser,
     })))
 
     console.log(await Product.find())
