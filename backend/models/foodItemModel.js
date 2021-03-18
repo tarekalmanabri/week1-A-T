@@ -1,8 +1,13 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 // Foodstuff products
-export const foodItemSchema = mongoose.Schema(
+const foodItemSchema = mongoose.Schema(
   {
+    farmer: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'Farmer',
+    },
     name: {
       type: String,
       required: true,
@@ -13,22 +18,7 @@ export const foodItemSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
-    producer: {
-      name: {
-        type: String,
-        required: true,
-        default: 'Local Producer',
-      },
-      city: {
-        type: String,
-        required: true,
-        default: 'Amsterdam',
-      },
-      address: {
-        type: String,
-        required: false,
-      },
-    },
+
     image: {
       type: String,
       required: true,
@@ -40,7 +30,7 @@ export const foodItemSchema = mongoose.Schema(
   },
   {
     timestamps: true,
-  },
-)
-const FoodItem = mongoose.model('FoodItem', foodItemSchema)
-export default FoodItem
+  }
+);
+const FoodItem = mongoose.model('FoodItem', foodItemSchema);
+export default FoodItem;

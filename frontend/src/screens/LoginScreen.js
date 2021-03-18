@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
+import FacebookAuth from '../components/FacebookAuth';
+import GoogleAuth from '../components/GoogleAuth';
 import { login } from '../actions/userActions';
 
 const LoginScreen = ({ location, history }) => {
@@ -59,6 +61,9 @@ const LoginScreen = ({ location, history }) => {
           Sign In
         </Button>
       </Form>
+
+      <GoogleAuth />
+      <FacebookAuth />
 
       <Row className="py-3">
         <Col>
