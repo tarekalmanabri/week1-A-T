@@ -1,5 +1,18 @@
 import asyncHandler from 'express-async-handler';
+import Farmer from '../models/farmerModel.js';
+import FoodItem from '../models/foodItemModel.js';
 import Bundle from '../models/bundleModel.js';
+
+// to include nested tables to the api response
+// (see .populate in controllers)
+// otherwise there will be IDs in response instead of data
+// https://mongoosejs.com/docs/populate.html#population
+const nestedDocs = {
+  path: 'foodItems',
+  populate: {
+    path: 'farmer',
+  },
+};
 
 // @desc    Fetch all bundles
 // @route   GET /api/bundles
@@ -20,7 +33,8 @@ export const getBundles = asyncHandler(async (req, res) => {
   const count = await Bundle.countDocuments({ ...keyword });
   const bundles = await Bundle.find({ ...keyword })
     .limit(pageSize)
-    .skip(pageSize * (page - 1));
+    .skip(pageSize * (page - 1))
+    .populate(nestedDocs);
 
   res.json({ bundles, page, pages: Math.ceil(count / pageSize) });
 });
@@ -29,7 +43,7 @@ export const getBundles = asyncHandler(async (req, res) => {
 // @route   GET /api/bundles/:id
 // @access  Public
 export const getBundleById = asyncHandler(async (req, res) => {
-  const bundle = await Bundle.findById(req.params.id);
+  const bundle = await Bundle.findById(req.params.id).populate(nestedDocs);
 
   if (bundle) {
     res.json(bundle);
