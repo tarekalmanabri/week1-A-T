@@ -68,7 +68,7 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
   };
 
   const price = (product.price * size && qty * product.price).toFixed(2);
-console.log(product);
+// console.log(product);
   return (
     <>
       <Link className="btn btn-light my-3" to="/">
@@ -78,7 +78,7 @@ console.log(product);
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
-      ) : (
+      ) : product && (
         <>
           <Meta title={product.name} />
           <Row>
@@ -182,8 +182,18 @@ console.log(product);
                   <h3>{product.name}</h3>
                 </ListGroup.Item>
                 <ListGroup.Item>Price: ${price}</ListGroup.Item>
-                <ListGroup.Item>
-                  Products In This Bundle: {product.description}
+                  <ListGroup.Item>
+                  Products In This Bundle:
+                  <ol>
+                    {/* Tarek, mark this '?' after foodItems! It's important otherwise all crashes :)) */}
+                    {product.foodItems?.map((item) => (
+                      <li key={item._id}>
+                        <p>{`${item.name}, €${item.price}, img: ${item.image}, farmer: ${item.farmer.name} from ${item.farmer.city}`}</p>
+                        {/* see in the console all available fields */}
+                        <p>{item.description}</p>
+                      </li>
+                    ))}
+                  </ol>
                 </ListGroup.Item>
               </ListGroup>
             </Col>
