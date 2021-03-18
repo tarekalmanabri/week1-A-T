@@ -25,6 +25,12 @@ import {
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
   USER_UPDATE_PROFILE_RESET,
+  USER_AUTH_FACEBOOK_REQUEST,
+  USER_AUTH_FACEBOOK_SUCCESS,
+  USER_AUTH_FACEBOOK_FAIL,
+  USER_AUTH_GOOGLE_REQUEST,
+  USER_AUTH_GOOGLE_SUCCESS,
+  USER_AUTH_GOOGLE_FAIL,
 } from '../constants/userConstants'
 
 export const userLoginReducer = (state = {}, action) => {
@@ -47,7 +53,7 @@ export const userRegisterReducer = (state = {}, action) => {
     case USER_REGISTER_REQUEST:
       return { loading: true }
     case USER_REGISTER_SUCCESS:
-      return { loading: false, userInfo: action.payload }
+      return { loading: false }
     case USER_REGISTER_FAIL:
       return { loading: false, error: action.payload }
     case USER_LOGOUT:
@@ -77,7 +83,7 @@ export const userUpdateProfileReducer = (state = {}, action) => {
     case USER_UPDATE_PROFILE_REQUEST:
       return { loading: true }
     case USER_UPDATE_PROFILE_SUCCESS:
-      return { loading: false, success: true, userInfo: action.payload }
+      return { loading: false, success: true }
     case USER_UPDATE_PROFILE_FAIL:
       return { loading: false, error: action.payload }
     case USER_UPDATE_PROFILE_RESET:
@@ -127,6 +133,32 @@ export const userUpdateReducer = (state = { user: {} }, action) => {
       return {
         user: {},
       }
+    default:
+      return state
+  }
+}
+
+export const userAuthFaceBookReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_AUTH_FACEBOOK_REQUEST:
+      return { loading: true }
+    case USER_AUTH_FACEBOOK_SUCCESS:
+      return { loading: false }
+    case USER_AUTH_FACEBOOK_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const userAuthGoogleReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_AUTH_GOOGLE_REQUEST:
+      return { loading: true }
+    case USER_AUTH_GOOGLE_SUCCESS:
+      return { loading: false }
+    case USER_AUTH_GOOGLE_FAIL:
+      return { loading: false, error: action.payload }
     default:
       return state
   }

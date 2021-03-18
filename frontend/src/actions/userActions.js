@@ -24,6 +24,12 @@ import {
   USER_UPDATE_FAIL,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_REQUEST,
+  USER_AUTH_FACEBOOK_REQUEST,
+  USER_AUTH_FACEBOOK_SUCCESS,
+  USER_AUTH_FACEBOOK_FAIL,
+  USER_AUTH_GOOGLE_REQUEST,
+  USER_AUTH_GOOGLE_SUCCESS,
+  USER_AUTH_GOOGLE_FAIL,
 } from '../constants/userConstants'
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
 
@@ -94,7 +100,6 @@ export const register = (name, email, password) => async (dispatch) => {
 
     dispatch({
       type: USER_REGISTER_SUCCESS,
-      payload: data,
     })
 
     dispatch({
@@ -172,7 +177,6 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
 
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
-      payload: data,
     })
     dispatch({
       type: USER_LOGIN_SUCCESS,
@@ -300,6 +304,70 @@ export const updateUser = (user) => async (dispatch, getState) => {
     dispatch({
       type: USER_UPDATE_FAIL,
       payload: message,
+    })
+  }
+}
+
+export const authFacebook = (accessToken, userID) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_AUTH_FACEBOOK_REQUEST })
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+
+    const { data } = await axios.post(
+      '/api/users/auth/facebook',
+      { accessToken, userID },
+      config
+    )
+
+    dispatch({ type: USER_AUTH_FACEBOOK_SUCCESS })
+
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
+
+    localStorage.setItem('userInfo', JSON.stringify(data))
+  } catch (error) {
+    dispatch({
+      type: USER_AUTH_FACEBOOK_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const authGoogle = (tokenId) => async (dispatch) => {
+  try {
+    dispatch({ type: USER_AUTH_GOOGLE_REQUEST })
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+
+    const { data } = await axios.post(
+      '/api/users/auth/google',
+      { tokenId },
+      config
+    )
+
+    dispatch({ type: USER_AUTH_GOOGLE_SUCCESS })
+
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
+
+    localStorage.setItem('userInfo', JSON.stringify(data))
+  } catch (error) {
+    dispatch({
+      type: USER_AUTH_GOOGLE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     })
   }
 }
