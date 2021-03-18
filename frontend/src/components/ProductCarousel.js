@@ -29,7 +29,7 @@ const ProductCarousel = () => {
               className="w-100 h-100"
               src={bundle.image}
               alt={bundle.name}
-              // fluid
+              fluid
             />
             <Carousel.Caption className="carousel-caption">
               <h2>
