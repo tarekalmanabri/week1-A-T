@@ -9,6 +9,7 @@ import {
   Card,
   Button,
   Form,
+  Container,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
 import Message from "../components/Message";
@@ -66,9 +67,7 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
       })
     );
   };
-  // not working:
-  // const price = (product.price * size && qty * product.price).toFixed(2)
-  // working:
+
   const getPrice = () => {
     if (!size || !qty || !product.price) return 0
     return (product.price * size * qty).toFixed(2)
@@ -187,17 +186,22 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
                 </ListGroup.Item>
                 <ListGroup.Item>Price: ${getPrice()}</ListGroup.Item>
                   <ListGroup.Item>
-                  Products In This Bundle:
-                  <ol>
-                    {/* Tarek, mark this '?' after foodItems! It's important otherwise all crashes :)) */}
-                    {product.foodItems?.map((item) => (
-                      <li key={item._id}>
-                        <p>{`${item.name}, €${item.price}, img: ${item.image}, farmer: ${item.farmer.name} from ${item.farmer.city}`}</p>
-                        {/* see in the console all available fields */}
-                        <p>{item.description}</p>
-                      </li>
-                    ))}
-                  </ol>
+                  <h4>Products In This Bundle:</h4>
+                 <Container>
+                  <Row>
+                   
+                  {product.foodItems?.map((item) => (
+                    <Col md={2} className='py-3'>
+                      <img src={item.image} alt={item.name} className='product-img'/>  
+                      <p>{item.name}</p>
+                      <p>€{item.price}</p>
+                      <p>Farmer: {item.farmer.name}</p>
+                      <hr/>
+                      </Col>
+                  ))}
+                
+                  </Row>
+                  </Container>
                 </ListGroup.Item>
               </ListGroup>
             </Col>
