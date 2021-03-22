@@ -88,9 +88,26 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
             <Col md={8}>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
-            
             <Col md={4}>
-              <Card>
+          <Row>
+            {product.reviews.length > 0 && (
+                  <ListGroup.Item>
+                    <p>Average Rating</p>
+                    <p>
+                      {
+                        <Rating
+                          value={product.rating}
+                          text={`${product.numReviews} review${
+                            product.numReviews !== 1 ? 's' : ''
+                          }`}
+                        />
+                      }
+                    </p>
+                  </ListGroup.Item>
+                )}
+          </Row>
+          <Row>
+              <Card className='mt-5'>
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
                     <Row>
@@ -176,6 +193,7 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
                   </ListGroup.Item>
                 </ListGroup>
               </Card>
+              </Row>
             </Col>
           </Row>
           <Row>
@@ -196,6 +214,7 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
                       <p>{item.name}</p>
                       <p>€{item.price}</p>
                       <p>Farmer: {item.farmer.name}</p>
+                         <img src={item.farmer.image} alt={item.farmer.name} className='product-img'/>
                       <hr/>
                       </Col>
                   ))}
@@ -211,21 +230,7 @@ const ProductScreen = ({ history, match, keyword, pageNumber }) => {
               <h2>Reviews</h2>
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant='flush'>
-                {product.reviews.length > 0 && (
-                  <ListGroup.Item>
-                    <p>Average Rating</p>
-                    <p>
-                      {
-                        <Rating
-                          value={product.rating}
-                          text={`${product.numReviews} review${
-                            product.numReviews !== 1 ? 's' : ''
-                          }`}
-                        />
-                      }
-                    </p>
-                  </ListGroup.Item>
-                )}
+               
 
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
