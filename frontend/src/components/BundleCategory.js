@@ -1,17 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card, CardGroup } from 'react-bootstrap';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Card, CardGroup } from 'react-bootstrap'
 
 const BundleCategory = () => {
   return (
     <CardGroup>
-      <Card className="card-bundle-category">
-        <Link to="/">
-          <Card.Img variant="top" src="images/vegan.jpg" />
+      <Card className='card-bundle-category'>
+        <Link to='/'>
+          <Card.Img variant='top' src='images/vegan.jpg' />
         </Link>
         <Card.Body>
-          <Link to="/">
-            <Card.Title as="h4" className="bundle-category">
+          <Link to='/'>
+            <Card.Title as='h4' className='bundle-category'>
               Vegan
             </Card.Title>
           </Link>
@@ -23,12 +23,12 @@ const BundleCategory = () => {
         </Card.Body>
       </Card>
       <Card>
-        <Link to="/">
-          <Card.Img variant="top" src="images/roasted-veggies.jpg" />
+        <Link to='/'>
+          <Card.Img variant='top' src='images/roasted-veggies.jpg' />
         </Link>
         <Card.Body>
-          <Link to="/">
-            <Card.Title as="h4" className="bundle-category">
+          <Link to='/'>
+            <Card.Title as='h4' className='bundle-category'>
               Vegetarian
             </Card.Title>
           </Link>
@@ -41,12 +41,12 @@ const BundleCategory = () => {
         </Card.Body>
       </Card>
       <Card>
-        <Link to="/">
-          <Card.Img variant="top" src="images/veggie-plate.jpg" />
+        <Link to='/'>
+          <Card.Img variant='top' src='images/veggie-plate.jpg' />
         </Link>
         <Card.Body>
-          <Link to="/">
-            <Card.Title as="h4" className="bundle-category">
+          <Link to='/'>
+            <Card.Title as='h4' className='bundle-category'>
               Meat & Veggies
             </Card.Title>
           </Link>
@@ -58,7 +58,7 @@ const BundleCategory = () => {
         </Card.Body>
       </Card>
     </CardGroup>
-  );
-};
+  )
+}
 
-export default BundleCategory;
+export default BundleCategory
